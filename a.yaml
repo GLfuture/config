@@ -1,0 +1,5 @@
+name: 'gong'
+age: 10
+info: 
+  address: 'there'
+  phone: ['123456','2345678']
