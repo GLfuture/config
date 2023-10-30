@@ -98,9 +98,8 @@ namespace Praser_NSP {
 
       int Prase(const std::string& content) override;
 
-      std::string Get_Value(const std::string& key){
-        return m_root[key];
-      }
+      int Get_Value(const std::string& key,std::string& value);
+      
     private:
       std::map<std::string,std::string> m_root;
     };

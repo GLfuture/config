@@ -33,3 +33,12 @@ int Praser_NSP::Praser_Config::Prase(const std::string &content)
     }
     return OK;
 }
+
+int Praser_NSP::Praser_Config::Get_Value(const std::string &key, std::string &value)
+{
+    std::map<std::string, std::string>::iterator it = m_root.find(key);
+    if (it == m_root.end())
+        return NO_MEMBER;
+    value = it->second;
+    return OK;
+}

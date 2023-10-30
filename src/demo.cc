@@ -46,7 +46,10 @@ int main()
     Configer_NSP::Config_Configer config;
     config.Load_Conf("../a.conf");
     Configer_NSP::Config_Configer::Config_Praser_Ptr config_praser_ptr = config.Get_Praser();
-    std::cout<< config_praser_ptr->Get_Value("name")<<std::endl<<config_praser_ptr->Get_Value("ip")<<std::endl;
-
+    std::string config_val;
+    config_praser_ptr->Get_Value("name",config_val);
+    std::cout<< config_val<<std::endl;
+    config_praser_ptr->Get_Value("ip",config_val);
+    std::cout<<config_val<<std::endl;
     return 0;
 }
