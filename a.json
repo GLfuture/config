@@ -1,5 +1,9 @@
 {
-    "array": ["hello","world",10],
+    "array": [
+        "hello",
+        "world",
+        10
+    ],
     "map": {
         "beijing": 1000,
         "sichuan": 500,
