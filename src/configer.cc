@@ -47,7 +47,7 @@ int Configer_NSP::Config_Configer::Load_Conf(const std::string &filepath)
     int ret = Read_Conf(filepath,content);
     if (!!ret)
     {
-        spdlog::error("Read Json Config Error : {}", std::string(strerror(ret)));
+        spdlog::error("Read Config file Error : {}", std::string(strerror(ret)));
         return -1;
     }
     praser->Prase(content);
