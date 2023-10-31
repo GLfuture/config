@@ -44,7 +44,7 @@ namespace Praser_NSP {
       template<class T>
       inline int Get_Value(const rapidjson::Value& root,const std::string& key,T& value)
       {
-        spdlog::error("Get_Value function : argument value type error");
+        spdlog::error("File:{} Line:{} Get_Value function : argument value type error",__FILE__,__LINE__);
         return VALUE_TYPE_ERROR;
       }
 
@@ -67,7 +67,7 @@ namespace Praser_NSP {
       inline int Get_Value(const YAML::Node &root,const std::string& key ,T& value)
       {
         if(root[key.c_str()].IsNull()){
-          spdlog::info("Get_Value funcion : yaml has no member");
+          spdlog::info("File:{} Line:{} Get_Value funcion : yaml has no member",__FILE__,__LINE__);
           return NO_MEMBER;
         }
         try
@@ -116,11 +116,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<int>(const rapidjson::Value& root,
     if(root[key.c_str()].IsInt()){
       value = root[key.c_str()].GetInt();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -134,11 +134,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<uint>(const rapidjson::Value& root
     if(root[key.c_str()].IsUint()){
       value = root[key.c_str()].GetUint();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -152,11 +152,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<int64_t>(const rapidjson::Value& r
     if(root[key.c_str()].IsInt64()){
       value = root[key.c_str()].GetInt64();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -170,11 +170,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<uint64_t>(const rapidjson::Value& 
     if(root[key.c_str()].IsUint64()){
       value = root[key.c_str()].GetUint64();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -188,11 +188,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<float>(const rapidjson::Value& roo
     if(root[key.c_str()].IsFloat()){
       value = root[key.c_str()].GetFloat();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -206,11 +206,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<double>(const rapidjson::Value& ro
     if(root[key.c_str()].IsDouble()){
       value = root[key.c_str()].GetDouble();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -224,11 +224,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<std::string>(const rapidjson::Valu
     if(root[key.c_str()].IsString()){
       value = root[key.c_str()].GetString();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -242,11 +242,11 @@ inline int Praser_NSP::Praser_Json::Get_Value<bool>(const rapidjson::Value& root
     if(root[key.c_str()].IsBool()){
       value = root[key.c_str()].GetBool();
     }else{
-      spdlog::info("Get_Value function : value's type does not match to json's type");
+      spdlog::info("File:{} Line:{} Get_Value function : value's type does not match to json's type",__FILE__,__LINE__);
       return VALUE_TYPE_ERROR;
     }
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;
@@ -261,7 +261,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<rapidjson::Value>(const rapidjson:
     rapidjson::Document doc;
     value.CopyFrom(jsonval,doc.GetAllocator());
   }else{
-    spdlog::info("Get_Value function : json has no member");
+    spdlog::info("File:{} Line:{} Get_Value function : json has no member",__FILE__,__LINE__);
     return NO_MEMBER;
   }
   return OK;

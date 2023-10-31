@@ -6,7 +6,7 @@ int Praser_NSP::Praser_Json::Prase(const std::string& content)
     doc.Parse(content.c_str());
     if (doc.HasParseError())
     {
-        spdlog::error("Json Parse Error : ErrorCode is {}", std::to_string(doc.GetParseError()));
+        spdlog::error("File:{} Line:{} Json Parse Error : ErrorCode is {}",__FILE__,__LINE__, std::to_string(doc.GetParseError()));
         return RARSE_ERROR;
     }
     m_root.CopyFrom(doc,doc.GetAllocator());
