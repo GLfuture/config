@@ -1,6 +1,6 @@
-#include "praser.h"
+#include "parser.h"
 
-int Praser_NSP::Praser_Json::Prase(const std::string& content)
+int Parser_NSP::Parser_Json::Prase(const std::string& content)
 {
     rapidjson::Document doc;
     doc.Parse(content.c_str());
@@ -14,14 +14,14 @@ int Praser_NSP::Praser_Json::Prase(const std::string& content)
 }
 
 
-int Praser_NSP::Praser_Yaml::Prase(const std::string& content)
+int Parser_NSP::Parser_Yaml::Prase(const std::string& content)
 {
     m_root = YAML::Load(content);
     if(m_root.IsNull()) return RARSE_ERROR;
     return OK;
 }
 
-int Praser_NSP::Praser_Config::Prase(const std::string &content)
+int Parser_NSP::Parser_Config::Prase(const std::string &content)
 {
     std::stringstream iss(content);
     std::string line;
@@ -34,7 +34,7 @@ int Praser_NSP::Praser_Config::Prase(const std::string &content)
     return OK;
 }
 
-int Praser_NSP::Praser_Config::Get_Value(const std::string &key, std::string &value)
+int Parser_NSP::Parser_Config::Get_Value(const std::string &key, std::string &value)
 {
     std::map<std::string, std::string>::iterator it = m_root.find(key);
     if (it == m_root.end())

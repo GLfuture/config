@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PRASER_H
-#define PRASER_H
+#ifndef Parser_H
+#define Parser_H
 #include <cstdint>
 #include <string>
 #include <iostream>
@@ -14,8 +14,8 @@
 #include <vector>
 #include <spdlog/spdlog.h>
 #include <memory>
-namespace Praser_NSP {
-    class Praser_Base
+namespace Parser_NSP {
+    class Parser_Base
     {
     public:
       enum PARSER_RET_CODE{
@@ -25,18 +25,18 @@ namespace Praser_NSP {
         VALUE_TYPE_ERROR,
 
       };
-      using Ptr = std::shared_ptr<Praser_Base>;
+      using Ptr = std::shared_ptr<Parser_Base>;
 
       virtual int Prase(const std::string& content) = 0;
 
-      virtual ~Praser_Base(){}
+      virtual ~Parser_Base(){}
     };
 
     //解析json配置文件
-    class Praser_Json : public Praser_Base
+    class Parser_Json : public Parser_Base
     {
     public:
-      using Ptr = std::shared_ptr<Praser_Json>;
+      using Ptr = std::shared_ptr<Parser_Json>;
       using Value = rapidjson::Value;
 
       int Prase(const std::string& content) override; 
@@ -56,10 +56,10 @@ namespace Praser_NSP {
       Value m_root;
     };
 
-    class Praser_Yaml : public Praser_Base
+    class Parser_Yaml : public Parser_Base
     {
     public:
-      using Ptr = std::shared_ptr<Praser_Yaml>;
+      using Ptr = std::shared_ptr<Parser_Yaml>;
       using Value = YAML::Node;
       int Prase(const std::string& content) override; 
 
@@ -90,10 +90,10 @@ namespace Praser_NSP {
       Value m_root;
     };
 
-    class Praser_Config:public Praser_Base
+    class Parser_Config:public Parser_Base
     {
     public:
-      using Ptr = std::shared_ptr<Praser_Config>;
+      using Ptr = std::shared_ptr<Parser_Config>;
 
 
       int Prase(const std::string& content) override;
@@ -110,7 +110,7 @@ namespace Praser_NSP {
 //Config_Json的特化
 //int 特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<int>(const rapidjson::Value& root,const std::string& key,int& value)
+inline int Parser_NSP::Parser_Json::Get_Value<int>(const rapidjson::Value& root,const std::string& key,int& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsInt()){
@@ -128,7 +128,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<int>(const rapidjson::Value& root,
 
 //uint 特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<uint>(const rapidjson::Value& root,const std::string& key,uint& value)
+inline int Parser_NSP::Parser_Json::Get_Value<uint>(const rapidjson::Value& root,const std::string& key,uint& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsUint()){
@@ -146,7 +146,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<uint>(const rapidjson::Value& root
 
 //int64特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<int64_t>(const rapidjson::Value& root,const std::string& key,int64_t& value)
+inline int Parser_NSP::Parser_Json::Get_Value<int64_t>(const rapidjson::Value& root,const std::string& key,int64_t& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsInt64()){
@@ -164,7 +164,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<int64_t>(const rapidjson::Value& r
 
 //uint64特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<uint64_t>(const rapidjson::Value& root,const std::string& key,uint64_t& value)
+inline int Parser_NSP::Parser_Json::Get_Value<uint64_t>(const rapidjson::Value& root,const std::string& key,uint64_t& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsUint64()){
@@ -182,7 +182,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<uint64_t>(const rapidjson::Value& 
 
 //float特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<float>(const rapidjson::Value& root,const std::string& key,float& value)
+inline int Parser_NSP::Parser_Json::Get_Value<float>(const rapidjson::Value& root,const std::string& key,float& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsFloat()){
@@ -200,7 +200,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<float>(const rapidjson::Value& roo
 
 //double特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<double>(const rapidjson::Value& root,const std::string& key,double& value)
+inline int Parser_NSP::Parser_Json::Get_Value<double>(const rapidjson::Value& root,const std::string& key,double& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsDouble()){
@@ -218,7 +218,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<double>(const rapidjson::Value& ro
 
 //string特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<std::string>(const rapidjson::Value& root,const std::string& key,std::string& value)
+inline int Parser_NSP::Parser_Json::Get_Value<std::string>(const rapidjson::Value& root,const std::string& key,std::string& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsString()){
@@ -236,7 +236,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<std::string>(const rapidjson::Valu
 
 //bool特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<bool>(const rapidjson::Value& root,const std::string& key,bool& value)
+inline int Parser_NSP::Parser_Json::Get_Value<bool>(const rapidjson::Value& root,const std::string& key,bool& value)
 {
   if(root.HasMember(key.c_str())){
     if(root[key.c_str()].IsBool()){
@@ -254,7 +254,7 @@ inline int Praser_NSP::Praser_Json::Get_Value<bool>(const rapidjson::Value& root
 
 //Value特化
 template <>
-inline int Praser_NSP::Praser_Json::Get_Value<rapidjson::Value>(const rapidjson::Value& root,const std::string& key,rapidjson::Value& value)
+inline int Parser_NSP::Parser_Json::Get_Value<rapidjson::Value>(const rapidjson::Value& root,const std::string& key,rapidjson::Value& value)
 {
   if(root.HasMember(key.c_str())){
     const rapidjson::Value& jsonval = root[key.c_str()];

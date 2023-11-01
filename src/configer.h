@@ -1,6 +1,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-#include "praser.h"
+#include "parser.h"
 
 namespace Configer_NSP
 {
@@ -17,40 +17,40 @@ namespace Configer_NSP
     {
     public:
         using Ptr = std::shared_ptr<Json_Configer>;
-        using Json_Praser_Ptr = Praser_NSP::Praser_Json::Ptr;
+        using Json_Parser_Ptr = Parser_NSP::Parser_Json::Ptr;
         Json_Configer()
         {
-            praser= std::make_shared<Praser_NSP::Praser_Json>();
+            Parser= std::make_shared<Parser_NSP::Parser_Json>();
         }
         
-        Json_Praser_Ptr Get_Praser()
+        Json_Parser_Ptr Get_Parser()
         {
-            return praser;
+            return Parser;
         }
 
         int Load_Conf(const std::string& filepath) override;
     private:
-        Json_Praser_Ptr praser;
+        Json_Parser_Ptr Parser;
     };
 
     class Yaml_Configer:public Configer_Base
     {
     public:
         using Ptr = std::shared_ptr<Yaml_Configer>;
-        using Yaml_Praser_Ptr = Praser_NSP::Praser_Yaml::Ptr;
+        using Yaml_Parser_Ptr = Parser_NSP::Parser_Yaml::Ptr;
         Yaml_Configer(){
-            praser = std::make_shared<Praser_NSP::Praser_Yaml>();
+            Parser = std::make_shared<Parser_NSP::Parser_Yaml>();
         }
 
-        Yaml_Praser_Ptr Get_Praser()
+        Yaml_Parser_Ptr Get_Parser()
         {
-            return praser;
+            return Parser;
         }
         
 
         int Load_Conf(const std::string& filepath) override;
     private:
-        Yaml_Praser_Ptr praser;
+        Yaml_Parser_Ptr Parser;
     };
 
     class Config_Configer:public Configer_Base
@@ -58,20 +58,20 @@ namespace Configer_NSP
     public:
         Config_Configer()
         {
-            praser = std::make_shared<Praser_NSP::Praser_Config>();
+            Parser = std::make_shared<Parser_NSP::Parser_Config>();
         }
         using Ptr = std::shared_ptr<Config_Configer>;
-        using Config_Praser_Ptr = Praser_NSP::Praser_Config::Ptr;
+        using Config_Parser_Ptr = Parser_NSP::Parser_Config::Ptr;
 
         int Load_Conf(const std::string& filepath) override;
 
-        Config_Praser_Ptr Get_Praser()
+        Config_Parser_Ptr Get_Parser()
         {
-            return praser;
+            return Parser;
         }
 
     private:
-        Config_Praser_Ptr praser;
+        Config_Parser_Ptr Parser;
     };
 }
 

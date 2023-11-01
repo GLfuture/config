@@ -31,12 +31,12 @@ int Configer_NSP::Json_Configer::Load_Conf(const std::string &filepath)
         spdlog::error("File:{} Line:{} Read Json Config Error : {}",__FILE__,__LINE__, std::string(strerror(ret)));
         return -1;
     }
-    return praser->Prase(content);
+    return Parser->Prase(content);
 }
 
 int Configer_NSP::Yaml_Configer::Load_Conf(const std::string &filepath)
 {
-    praser->Get_Root() = YAML::LoadFile(filepath);
+    Parser->Get_Root() = YAML::LoadFile(filepath);
     return 0;
 }
 
@@ -49,5 +49,5 @@ int Configer_NSP::Config_Configer::Load_Conf(const std::string &filepath)
         spdlog::error("File:{} Line:{} Read Config Error : {}",__FILE__,__LINE__, std::string(strerror(ret)));
         return -1;
     }
-    return praser->Prase(content);
+    return Parser->Prase(content);
 }
