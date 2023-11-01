@@ -8,7 +8,8 @@ int main()
     auto logger = std::make_shared<spdlog::logger>("logger",console_sink);
     spdlog::set_default_logger(logger);
     Configer_NSP::Json_Configer json;
-    json.Load_Conf("../a.json");
+    int code = json.Load_Conf("../a.json");
+    std::cout<<code<<std::endl;
     Configer_NSP::Json_Configer::Json_Praser_Ptr json_praser_ptr = json.Get_Praser();
     rapidjson::Value val,m;
     json_praser_ptr->Get_Value<rapidjson::Value>(json_praser_ptr->Get_Root(),"array",val);
