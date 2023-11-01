@@ -7,7 +7,7 @@ int Parser_NSP::Parser_Json::Prase(const std::string& content)
     if (doc.HasParseError())
     {
         spdlog::error("File:{} Line:{} Json Parse Error : ErrorCode is {}",__FILE__,__LINE__, std::to_string(doc.GetParseError()));
-        return RARSE_ERROR;
+        return PARSE_ERROR;
     }
     m_root.CopyFrom(doc,doc.GetAllocator());
     return OK;
@@ -17,7 +17,7 @@ int Parser_NSP::Parser_Json::Prase(const std::string& content)
 int Parser_NSP::Parser_Yaml::Prase(const std::string& content)
 {
     m_root = YAML::Load(content);
-    if(m_root.IsNull()) return RARSE_ERROR;
+    if(m_root.IsNull()) return PARSE_ERROR;
     return OK;
 }
 
@@ -28,7 +28,7 @@ int Parser_NSP::Parser_Config::Prase(const std::string &content)
     while(std::getline(iss,line)){
         if(line[0] == '#') continue; //#为注释
         int indx = line.find('=');
-        if(indx == std::string::npos || indx == 0 || indx == line.size()-1) return RARSE_ERROR;//没有等号或者没有key或value为错误
+        if(indx == std::string::npos || indx == 0 || indx == line.size()-1) return PARSE_ERROR;//没有等号或者没有key或value为错误
         m_root[line.substr(0,indx)] = line.substr(indx+1);
     }
     return OK;

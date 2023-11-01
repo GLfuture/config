@@ -21,7 +21,7 @@ namespace Parser_NSP {
       enum PARSER_RET_CODE{
         OK = 0,
         NO_MEMBER,
-        RARSE_ERROR,
+        PARSE_ERROR,
         VALUE_TYPE_ERROR,
 
       };
